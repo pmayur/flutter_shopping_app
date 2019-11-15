@@ -1,9 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+
 import 'package:shopping_app/cupertinoStore.dart';
+import 'models/appStateModel.dart';
 
 
-void main() => runApp(MyApp());
+void main() {
+  return runApp(
+  ChangeNotifierProvider<AppStateModel>(
+      builder: (context) => AppStateModel()..loadProducts(),
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   Widget build (BuildContext context) {
